@@ -616,12 +616,12 @@
             } catch (e) { console.error(e); }
         }
 
-        function addToolToRoom() { const id = document.getElementById('selectAlatRoom').value; const qty = parseInt(document.getElementById('qtyAlatRoom').value); if (validateTool(id, qty)) { selectedToolsRoom[id] = { id, jumlah: qty }; renderTools('listAlatRoom', selectedToolsRoom, 'removeToolFromRoom'); } }
+        function addToolToRoom() { const id = document.getElementById('selectAlatRoom').value; const qty = parseInt(document.getElementById('qtyAlatRoom').value); if (validateTool(id, qty)) { selectedToolsRoom[id] = { id: parseInt(id), jumlah: qty }; renderTools('listAlatRoom', selectedToolsRoom, 'removeToolFromRoom'); } }
         function removeToolFromRoom(id) { delete selectedToolsRoom[id]; renderTools('listAlatRoom', selectedToolsRoom, 'removeToolFromRoom'); }
-        function addToolToOnly() { const id = document.getElementById('selectAlatOnly').value; const qty = parseInt(document.getElementById('qtyAlatOnly').value); if (validateTool(id, qty)) { selectedToolsOnly[id] = { id, jumlah: qty }; renderTools('listAlatOnly', selectedToolsOnly, 'removeToolFromOnly'); } }
+        function addToolToOnly() { const id = document.getElementById('selectAlatOnly').value; const qty = parseInt(document.getElementById('qtyAlatOnly').value); if (validateTool(id, qty)) { selectedToolsOnly[id] = { id: parseInt(id), jumlah: qty }; renderTools('listAlatOnly', selectedToolsOnly, 'removeToolFromOnly'); } }
         function removeToolFromOnly(id) { delete selectedToolsOnly[id]; renderTools('listAlatOnly', selectedToolsOnly, 'removeToolFromOnly'); }
-        function validateTool(id, qty) { if (!id || isNaN(qty) || qty <= 0) { Swal.fire('Oops', 'Pilih alat & jumlah valid!', 'error'); return false; } const item = globalEquipment.find(e => e.id === id); if (item.jumlah_tersedia < qty) { Swal.fire('Stok Kurang', `Stok tidak cukup (Sisa: ${item.jumlah_tersedia})`, 'warning'); return false; } return true; }
-        function renderTools(cId, dataObj, fnName) { const c = document.getElementById(cId); c.innerHTML = ''; if (Object.keys(dataObj).length === 0) { c.innerHTML = '<p class="text-xs text-gray-400 italic text-center">Belum ada alat</p>'; return; } for (const id in dataObj) { const item = globalEquipment.find(e => e.id === id); c.innerHTML += `<div class="flex justify-between bg-white p-2 border rounded-xl text-sm items-center shadow-sm"><span>${item.nama_alat}</span><div class="flex items-center"><span class="font-bold text-blue-600 mr-2">${dataObj[id].jumlah}x</span><button type="button" onclick="${fnName}('${id}')" class="text-red-500 font-bold hover:bg-red-50 rounded p-1">&times;</button></div></div>`; } }
+        function validateTool(id, qty) { if (!id || isNaN(qty) || qty <= 0) { Swal.fire('Oops', 'Pilih alat & jumlah valid!', 'error'); return false; } const item = globalEquipment.find(e => e.id == id); if (item.jumlah_tersedia < qty) { Swal.fire('Stok Kurang', `Stok tidak cukup (Sisa: ${item.jumlah_tersedia})`, 'warning'); return false; } return true; }
+        function renderTools(cId, dataObj, fnName) { const c = document.getElementById(cId); c.innerHTML = ''; if (Object.keys(dataObj).length === 0) { c.innerHTML = '<p class="text-xs text-gray-400 italic text-center">Belum ada alat</p>'; return; } for (const id in dataObj) { const item = globalEquipment.find(e => e.id == id); c.innerHTML += `<div class="flex justify-between bg-white p-2 border rounded-xl text-sm items-center shadow-sm"><span>${item.nama_alat}</span><div class="flex items-center"><span class="font-bold text-blue-600 mr-2">${dataObj[id].jumlah}x</span><button type="button" onclick="${fnName}('${id}')" class="text-red-500 font-bold hover:bg-red-50 rounded p-1">&times;</button></div></div>`; } }
 
         document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -703,7 +703,7 @@
             list.innerHTML = '';
 
             const scheds = globalSchedules
-                .filter(s => s.ruang_id === id)
+                .filter(s => s.ruang_id == id)
                 .sort((a, b) => new Date(a.waktu_mulai) - new Date(b.waktu_mulai));
 
             if (scheds.length === 0) {
