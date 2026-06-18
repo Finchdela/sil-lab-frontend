@@ -37,60 +37,84 @@
     </div>
 
     <div
-        class="bg-white/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-md transform transition hover:scale-[1.01] duration-500 border border-white/50 relative z-10">
-        <div class="text-center mb-8">
-            <h1
-                class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 tracking-tight">
-                SISIL</h1>
-            <p class="text-xs text-gray-500 mt-1 font-medium">SciTech Information System for Inventory and Laboratory
-            </p>
+        class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-4xl grid md:grid-cols-2 overflow-hidden transform transition hover:scale-[1.005] duration-500 border border-white/50 relative z-10 mx-4">
+        
+        <!-- Left Side: Image Banner (Visible on md and up) -->
+        <div class="hidden md:block relative overflow-hidden">
+            <img src="gedung.jpg" alt="UIN Raden Mas Said Surakarta" class="absolute inset-0 w-full h-full object-cover">
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/80 to-blue-900/60 flex flex-col justify-end p-8 text-white">
+                <div class="backdrop-blur-md bg-white/10 p-6 rounded-2xl border border-white/20">
+                    <h2 class="text-2xl font-bold mb-1 tracking-tight">Laboratorium Terpadu</h2>
+                    <p class="text-xs text-slate-200 font-medium">UIN Raden Mas Said Surakarta</p>
+                </div>
+            </div>
         </div>
 
-        <form id="loginForm" class="space-y-5">
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Email Institusi</label>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fas fa-envelope text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+        <!-- Right Side: Login Form -->
+        <div class="p-8 md:p-12 flex flex-col justify-center">
+            <div class="text-center mb-8">
+                <!-- For Mobile: Show a small version of the image at the top -->
+                <div class="md:hidden mb-6 rounded-2xl overflow-hidden h-36 relative shadow-md">
+                    <img src="gedung.jpg" alt="UIN Raden Mas Said Surakarta" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-3 text-white">
+                        <p class="text-xs font-bold tracking-tight">Laboratorium Terpadu</p>
+                        <p class="text-[10px] text-slate-300">UIN Raden Mas Said Surakarta</p>
                     </div>
-                    <input type="email" id="email"
-                        class="pl-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 shadow-sm"
-                        placeholder="nama@uinsaid.ac.id" required>
                 </div>
+                <h1
+                    class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 tracking-tight">
+                    SISIL</h1>
+                <p class="text-xs text-gray-500 mt-1 font-medium">SciTech Information System for Inventory and Laboratory
+                </p>
             </div>
 
-            <div>
-                <div class="flex justify-between items-center mb-1.5 ml-1">
-                    <label class="block text-sm font-semibold text-gray-700">Password</label>
-                    <!-- LINK LUPA PASSWORD -->
-                    <a href="forgot-password.html"
-                        class="text-xs text-blue-600 hover:text-blue-800 hover:underline font-bold transition">Lupa
-                        Password?</a>
-                </div>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fas fa-lock text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+            <form id="loginForm" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Email Institusi</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+                        </div>
+                        <input type="email" id="email"
+                            class="pl-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 shadow-sm"
+                            placeholder="nama@uinsaid.ac.id" required>
                     </div>
-                    <input type="password" id="password"
-                        class="pl-11 pr-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 shadow-sm"
-                        placeholder="••••••••" required>
-                    <button type="button" onclick="togglePassword('password', 'eyeIcon')"
-                        class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 cursor-pointer focus:outline-none">
-                        <i id="eyeIcon" class="fas fa-eye"></i>
-                    </button>
                 </div>
-            </div>
 
-            <button type="submit"
-                class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-500/30 transform active:scale-95 text-lg cursor-pointer">
-                Masuk
-            </button>
-        </form>
+                <div>
+                    <div class="flex justify-between items-center mb-1.5 ml-1">
+                        <label class="block text-sm font-semibold text-gray-700">Password</label>
+                        <!-- LINK LUPA PASSWORD -->
+                        <a href="forgot-password.html"
+                            class="text-xs text-blue-600 hover:text-blue-800 hover:underline font-bold transition">Lupa
+                            Password?</a>
+                    </div>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400 group-focus-within:text-blue-500 transition-colors"></i>
+                        </div>
+                        <input type="password" id="password"
+                            class="pl-11 pr-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 shadow-sm"
+                            placeholder="••••••••" required>
+                        <button type="button" onclick="togglePassword('password', 'eyeIcon')"
+                            class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 cursor-pointer focus:outline-none">
+                            <i id="eyeIcon" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
 
-        <p class="mt-6 text-sm text-center text-gray-600">
-            Belum punya akun? <a href="register.html" class="text-blue-600 hover:underline font-semibold">Daftar
-                Sekarang</a>
-        </p>
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-500/30 transform active:scale-95 text-lg cursor-pointer">
+                    Masuk
+                </button>
+            </form>
+
+            <p class="mt-6 text-sm text-center text-gray-600 font-medium">
+                Belum punya akun? <a href="register.html" class="text-blue-600 hover:underline font-bold">Daftar
+                    Sekarang</a>
+            </p>
+        </div>
     </div>
 
     <script>
