@@ -24,7 +24,7 @@
 </head>
 
 <body
-    class="bg-gradient-to-br from-green-50 to-teal-100 flex items-center justify-center h-screen font-sans relative overflow-hidden">
+    class="bg-gradient-to-br from-green-50 to-teal-100 flex items-center justify-center min-h-screen font-sans relative py-6 md:py-12 overflow-y-auto">
     <!-- Background Decoration -->
     <div
         class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
@@ -37,85 +37,107 @@
     </div>
 
     <div
-        class="bg-white/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-md transform transition hover:scale-[1.01] duration-500 border border-white/50 relative z-10">
-        <div class="text-center mb-8">
-            <h2
-                class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600 tracking-tight mb-1">
-                Buat Akun</h2>
-            <p class="text-sm font-medium text-gray-500">Bergabunglah dengan SISIL UIN Said</p>
+        class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-4xl grid md:grid-cols-2 overflow-hidden transform transition hover:scale-[1.005] duration-500 border border-white/50 relative z-10 mx-4 my-auto">
+        
+        <!-- Left Side: Image Banner (Visible on md and up) -->
+        <div class="hidden md:block relative overflow-hidden">
+            <img src="gedung.jpg" alt="UIN Raden Mas Said Surakarta" class="absolute inset-0 w-full h-full object-cover">
+            <!-- Gradient Overlay (Green/Teal for Register) -->
+            <div class="absolute inset-0 bg-gradient-to-br from-teal-900/80 to-green-900/60 flex flex-col justify-end p-8 text-white">
+                <div class="backdrop-blur-md bg-white/10 p-6 rounded-2xl border border-white/20">
+                    <h2 class="text-2xl font-bold mb-1 tracking-tight">Laboratorium Terpadu</h2>
+                    <p class="text-xs text-slate-200 font-medium">UIN Raden Mas Said Surakarta</p>
+                </div>
+            </div>
         </div>
 
-        <form id="registerForm" class="space-y-5">
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Nama Lengkap</label>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fas fa-user text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
-                    </div>
-                    <input type="text" id="nama"
-                        class="pl-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm"
-                        placeholder="Nama Lengkap" required>
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Email Institusi</label>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i
-                            class="fas fa-envelope text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
-                    </div>
-                    <input type="email" id="email" placeholder="nim@mhs.uinsaid.ac.id"
-                        class="pl-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm"
-                        required>
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Password</label>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fas fa-lock text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
-                    </div>
-                    <input type="password" id="password"
-                        class="pl-11 pr-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm"
-                        placeholder="••••••••" required>
-                    <button type="button" onclick="togglePassword()"
-                        class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 cursor-pointer focus:outline-none">
-                        <i id="eyeIcon" class="fas fa-eye"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Daftar Sebagai</label>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i
-                            class="fas fa-id-badge text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
-                    </div>
-                    <select id="role"
-                        class="pl-11 w-full p-3.5 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm appearance-none cursor-pointer">
-                        <option value="mahasiswa">Mahasiswa</option>
-                        <option value="dosen">Dosen</option>
-                        <option value="asisten">Asisten Lab</option>
-                    </select>
-                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400">
-                        <i class="fas fa-chevron-down text-xs"></i>
+        <!-- Right Side: Register Form -->
+        <div class="p-8 md:p-12 flex flex-col justify-center">
+            <div class="text-center mb-6">
+                <!-- For Mobile: Show a small version of the image at the top -->
+                <div class="md:hidden mb-6 rounded-2xl overflow-hidden h-36 relative shadow-md">
+                    <img src="gedung.jpg" alt="UIN Raden Mas Said Surakarta" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-3 text-white">
+                        <p class="text-xs font-bold tracking-tight">Laboratorium Terpadu</p>
+                        <p class="text-[10px] text-slate-300">UIN Raden Mas Said Surakarta</p>
                     </div>
                 </div>
+                <h2
+                    class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600 tracking-tight mb-1">
+                    Buat Akun</h2>
+                <p class="text-xs font-medium text-gray-500">Bergabunglah dengan SISIL UIN Said</p>
             </div>
 
-            <button type="submit"
-                class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white p-3.5 rounded-xl font-bold transition-all shadow-lg shadow-green-500/30 transform active:scale-95 text-lg cursor-pointer">
-                Daftar Sekarang
-            </button>
-        </form>
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1 ml-1">Nama Lengkap</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-user text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
+                        </div>
+                        <input type="text" id="nama"
+                            class="pl-11 w-full p-3 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm"
+                            placeholder="Nama Lengkap" required>
+                    </div>
+                </div>
 
-        <p class="mt-8 text-sm text-center text-gray-600">
-            Sudah punya akun? <a href="index.html"
-                class="text-green-600 hover:text-green-800 hover:underline font-bold transition">Masuk di sini</a>
-        </p>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1 ml-1">Email Institusi</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
+                        </div>
+                        <input type="email" id="email" placeholder="nim@mhs.uinsaid.ac.id"
+                            class="pl-11 w-full p-3 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm"
+                            required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1 ml-1">Password</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
+                        </div>
+                        <input type="password" id="password"
+                            class="pl-11 pr-11 w-full p-3 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm"
+                            placeholder="••••••••" required>
+                        <button type="button" onclick="togglePassword()"
+                            class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 cursor-pointer focus:outline-none">
+                            <i id="eyeIcon" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1 ml-1">Daftar Sebagai</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-id-badge text-gray-400 group-focus-within:text-green-500 transition-colors"></i>
+                        </div>
+                        <select id="role"
+                            class="pl-11 w-full p-3 bg-gray-50 border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-green-500 outline-none transition-all duration-300 shadow-sm appearance-none cursor-pointer">
+                            <option value="mahasiswa">Mahasiswa</option>
+                            <option value="dosen">Dosen</option>
+                            <option value="asisten">Asisten Lab</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white p-3.5 rounded-xl font-bold transition-all shadow-lg shadow-green-500/30 transform active:scale-95 text-lg cursor-pointer mt-2">
+                    Daftar Sekarang
+                </button>
+            </form>
+
+            <p class="mt-6 text-sm text-center text-gray-600 font-medium">
+                Sudah punya akun? <a href="index.html"
+                    class="text-green-600 hover:text-green-800 hover:underline font-bold transition">Masuk di sini</a>
+            </p>
+        </div>
     </div>
 
     <script>
